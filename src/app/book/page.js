@@ -8,6 +8,10 @@ function BookAppointmentForm() {
   const searchParams = useSearchParams();
   const initialProduct = searchParams.get('product') || '';
 
+  // Formspree form ID — set NEXT_PUBLIC_FORMSPREE_ID in .env.local (e.g. "abcdwxyz").
+  // When unset, the form falls back to opening the visitor's email client.
+  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,14 +23,14 @@ function BookAppointmentForm() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Build mailto link
+  const sendViaMailto = () => {
     const subject = encodeURIComponent(`[APPOINTMENT] Sales Inquiry from ${formData.firstName} ${formData.lastName}`);
     const body = encodeURIComponent(
       `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterested Product: ${formData.product}\nPreferred Date: ${formData.date}\nPreferred Time: ${formData.time}\n\nMessage:\n${formData.message}`
@@ -35,17 +39,67 @@ function BookAppointmentForm() {
     setSubmitted(true);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    // Fall back to email client if Formspree isn't configured yet.
+    if (!FORMSPREE_ID) {
+      sendViaMailto();
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          product: formData.product,
+          preferredDate: formData.date,
+          preferredTime: formData.time,
+          message: formData.message,
+          _subject: `[APPOINTMENT] Sales Inquiry from ${formData.firstName} ${formData.lastName}`,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setError(
+          data?.errors?.map((err) => err.message).join(', ') ||
+            'Something went wrong sending your request. Please try again or email us directly at sales@royalcrestgems.com.'
+        );
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again, or email us at sales@royalcrestgems.com.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <>
       {submitted ? (
         <div style={{ textAlign: 'center', padding: '60px 32px', background: 'var(--cream)', borderRadius: '12px' }}>
           <div style={{ fontSize: '3rem', margin: '0 auto 16px' }}>✅</div>
           <h3>Request Sent!</h3>
-          <p style={{ marginTop: '12px' }}>Your email client has opened with your appointment request. Please send the email to complete your booking. A sales representative will be in touch shortly.</p>
+          <p style={{ marginTop: '12px' }}>
+            {FORMSPREE_ID
+              ? 'Thank you — your appointment request has been received. A sales representative will be in touch with you shortly to confirm the details.'
+              : 'Your email client has opened with your appointment request. Please send the email to complete your booking. A sales representative will be in touch shortly.'}
+          </p>
           <button
             className="btn btn-outline"
             style={{ marginTop: '24px' }}
-            onClick={() => setSubmitted(false)}
+            onClick={() => {
+              setSubmitted(false);
+              setFormData({ firstName: '', lastName: '', email: '', phone: '', product: '', date: '', time: '', message: '' });
+            }}
           >
             Submit Another Request
           </button>
@@ -154,8 +208,19 @@ function BookAppointmentForm() {
               placeholder="Any specific requests or questions?"
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary" id="book-submit-btn" style={{ width: '100%', marginTop: '16px' }}>
-            Book Appointment
+          {error && (
+            <p style={{ marginTop: '16px', color: '#B3261E', fontSize: '0.9rem', textAlign: 'center' }}>
+              {error}
+            </p>
+          )}
+          <button
+            type="submit"
+            className="btn btn-primary"
+            id="book-submit-btn"
+            style={{ width: '100%', marginTop: '16px', opacity: submitting ? 0.7 : 1, pointerEvents: submitting ? 'none' : 'auto' }}
+            disabled={submitting}
+          >
+            {submitting ? 'Sending…' : 'Book Appointment'}
           </button>
         </form>
       )}
