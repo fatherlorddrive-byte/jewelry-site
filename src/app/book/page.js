@@ -8,9 +8,9 @@ function BookAppointmentForm() {
   const searchParams = useSearchParams();
   const initialProduct = searchParams.get('product') || '';
 
-  // Formspree form ID — set NEXT_PUBLIC_FORMSPREE_ID in .env.local (e.g. "abcdwxyz").
-  // When unset, the form falls back to opening the visitor's email client.
-  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+  // Formspree form ID. Defaults to the live form; override with NEXT_PUBLIC_FORMSPREE_ID
+  // if you ever swap forms. (A Formspree ID is a public endpoint, safe to ship in the bundle.)
+  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || 'mrevvkrb';
 
   const [formData, setFormData] = useState({
     firstName: '',
