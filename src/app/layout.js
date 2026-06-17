@@ -3,14 +3,14 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://royalcrestgems.com'),
   title: {
-    default: 'Royal Crest Gems | Fine Jewelry & Luxury Timepieces',
+    default: 'Royal Crest Gems | Fine Diamond, Gold & Platinum Jewelry',
     template: '%s | Royal Crest Gems',
   },
   description: 'Royal Crest Gems — Where Elegance Meets Legacy. Premium gold, diamond, and gemstone jewelry with showrooms in the United States and Sweden. Established 2011.',
-  keywords: 'luxury jewelry, gold jewelry, diamond rings, fine jewelry, engagement rings, watches, Sweden jewelry, California jewelry, Royal Crest Gems',
+  keywords: 'luxury jewelry, gold jewelry, diamond rings, platinum jewelry, fine jewelry, engagement rings, emerald, sapphire, ruby, Sweden jewelry, California jewelry, Royal Crest Gems',
   authors: [{ name: 'Royal Crest Gems' }],
   openGraph: {
-    title: 'Royal Crest Gems | Fine Jewelry & Luxury Timepieces',
+    title: 'Royal Crest Gems | Fine Diamond, Gold & Platinum Jewelry',
     description: 'Where Elegance Meets Legacy. Premium jewelry collections featuring gold, diamonds, and precious gemstones.',
     url: 'https://royalcrestgems.com',
     siteName: 'Royal Crest Gems',

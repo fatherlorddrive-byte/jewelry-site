@@ -12,7 +12,7 @@ export default function AboutPage() {
     { year: '2013', title: 'First Gold Collection', desc: 'Launch of our signature 18K and 24K gold collection, establishing our reputation for exceptional gold craftsmanship.' },
     { year: '2015', title: 'Diamond Certification', desc: 'Royal Crest Gems receives certification as an authorized diamond dealer, sourcing ethically-mined stones from around the world.' },
     { year: '2017', title: 'US Expansion', desc: 'Opening of our Monterey Park, California showroom, bringing our Scandinavian-luxury aesthetic to the American market.' },
-    { year: '2019', title: 'Watch Collection Launch', desc: 'Introduction of our luxury timepiece collection, featuring Swiss movements in handcrafted precious metal cases.' },
+    { year: '2019', title: 'Platinum Collection Launch', desc: 'Introduction of our rare platinum collection, featuring investment-grade diamonds and the world’s finest colored gemstones.' },
     { year: '2021', title: 'A Decade of Excellence', desc: 'Celebrating 10 years of crafting timeless jewelry, with over 5,000 bespoke pieces created for clients worldwide.' },
     { year: '2024', title: 'Digital Experience', desc: 'Launch of our premium online experience, making our collections accessible to jewelry connoisseurs globally.' },
   ];
@@ -56,7 +56,7 @@ export default function AboutPage() {
               <p>
                 Today, with showrooms in both Monterey Park, California and Malmö, Sweden, we serve a global
                 clientele of discerning individuals who appreciate the artistry that goes into every ring,
-                necklace, bracelet, and timepiece we create.
+                necklace, bracelet, and gemstone we create.
               </p>
             </div>
           </div>

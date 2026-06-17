@@ -34,9 +34,9 @@ export default function Footer() {
               <li><Link href="/collections#rings">Rings</Link></li>
               <li><Link href="/collections#bracelets">Bracelets & Bangles</Link></li>
               <li><Link href="/collections#earrings">Earrings</Link></li>
-              <li><Link href="/collections#watches">Luxury Watches</Link></li>
               <li><Link href="/collections#gold_collection">Gold Collection</Link></li>
               <li><Link href="/collections#diamond_collection">Diamond Collection</Link></li>
+              <li><Link href="/collections#platinum_collection">Platinum Collection</Link></li>
             </ul>
           </div>
 

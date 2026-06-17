@@ -13,12 +13,12 @@ export default function Home() {
   }, []);
 
   const featuredCategories = [
-    { key: 'necklaces', image: '/images/necklace-collection.png', title: 'Necklaces & Pendants', count: '7 Pieces' },
-    { key: 'rings', image: '/images/rings-collection.png', title: 'Rings', count: '8 Pieces' },
-    { key: 'bracelets', image: '/images/bracelet-collection.png', title: 'Bracelets & Bangles', count: '6 Pieces' },
-    { key: 'earrings', image: '/images/earrings-collection.png', title: 'Earrings', count: '6 Pieces' },
-    { key: 'watches', image: '/images/mens-gold-watch.png', title: 'Luxury Watches', count: '5 Pieces' },
-    { key: 'diamond_collection', image: '/images/diamond-collection.png', title: 'Diamond Collection', count: '3 Pieces' },
+    { key: 'necklaces', image: '/images/necklace-collection.png', title: 'Necklaces & Pendants', count: '6 Pieces' },
+    { key: 'rings', image: '/images/rings-collection.png', title: 'Rings', count: '6 Pieces' },
+    { key: 'bracelets', image: '/images/bracelet-collection.png', title: 'Bracelets & Bangles', count: '4 Pieces' },
+    { key: 'earrings', image: '/images/earrings-collection.png', title: 'Earrings', count: '3 Pieces' },
+    { key: 'platinum_collection', image: '/images/gold-womens-pendant.png', title: 'Platinum Collection', count: '4 Pieces' },
+    { key: 'diamond_collection', image: '/images/diamond-collection.png', title: 'Diamond Collection', count: '5 Pieces' },
   ];
 
   const testimonials = [
@@ -37,7 +37,7 @@ export default function Home() {
     {
       name: 'Dr. Erik Johansson',
       location: 'Stockholm, Sweden',
-      text: 'I have been a loyal customer for five years. Every piece from Royal Crest Gems is a work of art. Their watches collection is unmatched.',
+      text: 'I have been a loyal customer for five years. Every piece from Royal Crest Gems is a work of art. Their platinum and diamond collection is unmatched.',
       initials: 'EJ',
     },
     {
@@ -56,10 +56,10 @@ export default function Home() {
 
   // Get a few featured products
   const featuredProducts = [
-    products.necklaces.subcategories.gold.items[0],
-    products.rings.subcategories.engagement.items[0],
-    products.watches.subcategories.mens.items[0],
-    products.bracelets.subcategories.diamond.items[0],
+    products.diamond_collection.subcategories.solitaire.items[0],
+    products.platinum_collection.subcategories.gemstone.items[0],
+    products.necklaces.subcategories.diamond.items[0],
+    products.bracelets.subcategories.platinum.items[0],
   ];
 
   return (

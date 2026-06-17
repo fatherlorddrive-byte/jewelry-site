@@ -16,9 +16,9 @@ export default function CollectionsPage() {
     rings: 'Rings',
     bracelets: 'Bracelets',
     earrings: 'Earrings',
-    watches: 'Watches',
     gold_collection: 'Gold',
     diamond_collection: 'Diamonds',
+    platinum_collection: 'Platinum',
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function CollectionsPage() {
       <section className="page-hero" id="collections-hero">
         <div className="page-hero-content">
           <h1>Our Collections</h1>
-          <p>Explore our curated categories of fine jewelry, luxury watches, and precious gemstones — each piece crafted with passion and precision.</p>
+          <p>Explore our curated categories of fine gold, platinum, diamond, and precious gemstone jewelry — each piece crafted with passion and precision.</p>
         </div>
       </section>
 
