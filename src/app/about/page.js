@@ -17,6 +17,27 @@ export default function AboutPage() {
     { year: '2024', title: 'Digital Experience', desc: 'Launch of our premium online experience, making our collections accessible to jewelry connoisseurs globally.' },
   ];
 
+  const team = [
+    {
+      name: 'Edward Frank',
+      initials: 'EF',
+      role: 'Regional Manager — United States',
+      bio: 'Edward Frank leads Royal Crest Gems’ United States operations from our Monterey Park, California showroom. A GIA-certified gemologist with over 18 years in fine jewelry and luxury retail, Edward began his career grading colorless diamonds before moving into private client advisory and showroom leadership. He has personally guided hundreds of collectors through bespoke commissions, investment-grade diamond acquisitions, and rare estate pieces — and is known for his discreet, white-glove service and his deep expertise in platinum craftsmanship.',
+      email: 'e.frank@royalcrestgems.com',
+      phone: '(256) 337-0106',
+      phoneHref: '+12563370106',
+    },
+    {
+      name: 'Lynda Quinn',
+      initials: 'LQ',
+      role: 'Regional Manager — Sweden',
+      bio: 'Lynda Quinn oversees Royal Crest Gems’ Scandinavian operations from our flagship Malmö showroom. A graduate gemologist with more than 15 years across Europe’s leading luxury houses, Lynda specializes in rare colored gemstones — Burmese rubies, Colombian emeralds, and Ceylon sapphires — and in matching clients with heirloom-quality pieces. Fluent in Swedish, English, and French, she is celebrated for her refined eye, her warmth with clients, and her unwavering commitment to ethical sourcing.',
+      email: 'l.quinn@royalcrestgems.com',
+      phone: '(779) 513-0686',
+      phoneHref: '+17795130686',
+    },
+  ];
+
   return (
     <>
       <Header />
@@ -105,6 +126,41 @@ export default function AboutPage() {
           </div>
 
 
+        </div>
+      </section>
+
+      {/* REGIONAL LEADERSHIP */}
+      <section className="section section-cream" id="regional-leadership">
+        <div className="container">
+          <div className="section-header">
+            <h2>Regional Leadership</h2>
+            <p>Meet the regional managers who lead our showrooms and personally care for our clients across two continents.</p>
+          </div>
+          <div className="team-grid">
+            {team.map((member) => (
+              <div className="team-card" key={member.email} id={`team-${member.initials.toLowerCase()}`}>
+                {/* To use a real photo, replace the .team-photo block below with:
+                    <img className="team-photo-img" src="/images/edward-frank.jpg" alt={member.name} /> */}
+                <div className="team-photo">
+                  <div className="team-photo-initials">{member.initials}</div>
+                  <span className="team-photo-caption">Photo Coming Soon</span>
+                </div>
+                <div className="team-card-body">
+                  <h3>{member.name}</h3>
+                  <p className="team-role">{member.role}</p>
+                  <p>{member.bio}</p>
+                  <div className="team-contact">
+                    <a href={`mailto:${member.email}`}>
+                      <span className="team-contact-icon">✉️</span> {member.email}
+                    </a>
+                    <a href={`tel:${member.phoneHref}`}>
+                      <span className="team-contact-icon">📞</span> {member.phone}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
