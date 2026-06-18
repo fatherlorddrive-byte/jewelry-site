@@ -21,6 +21,7 @@ export default function AboutPage() {
     {
       name: 'Edward Frank',
       initials: 'EF',
+      photo: '/images/edward-frank.jpg',
       role: 'Regional Manager — United States',
       bio: 'Edward Frank leads Royal Crest Gems’ United States operations from our Monterey Park, California showroom. A GIA-certified gemologist with over 18 years in fine jewelry and luxury retail, Edward began his career grading colorless diamonds before moving into private client advisory and showroom leadership. He has personally guided hundreds of collectors through bespoke commissions, investment-grade diamond acquisitions, and rare estate pieces — and is known for his discreet, white-glove service and his deep expertise in platinum craftsmanship.',
       email: 'e.frank@royalcrestgems.com',
@@ -30,6 +31,7 @@ export default function AboutPage() {
     {
       name: 'Lynda Quinn',
       initials: 'LQ',
+      photo: '/images/lynda-quinn.png',
       role: 'Regional Manager — Sweden',
       bio: 'Lynda Quinn oversees Royal Crest Gems’ Scandinavian operations from our flagship Malmö showroom. A graduate gemologist with more than 15 years across Europe’s leading luxury houses, Lynda specializes in rare colored gemstones — Burmese rubies, Colombian emeralds, and Ceylon sapphires — and in matching clients with heirloom-quality pieces. Fluent in Swedish, English, and French, she is celebrated for her refined eye, her warmth with clients, and her unwavering commitment to ethical sourcing.',
       email: 'l.quinn@royalcrestgems.com',
@@ -139,12 +141,14 @@ export default function AboutPage() {
           <div className="team-grid">
             {team.map((member) => (
               <div className="team-card" key={member.email} id={`team-${member.initials.toLowerCase()}`}>
-                {/* To use a real photo, replace the .team-photo block below with:
-                    <img className="team-photo-img" src="/images/edward-frank.jpg" alt={member.name} /> */}
-                <div className="team-photo">
-                  <div className="team-photo-initials">{member.initials}</div>
-                  <span className="team-photo-caption">Photo Coming Soon</span>
-                </div>
+                {member.photo ? (
+                  <img className="team-photo-img" src={member.photo} alt={member.name} />
+                ) : (
+                  <div className="team-photo">
+                    <div className="team-photo-initials">{member.initials}</div>
+                    <span className="team-photo-caption">Photo Coming Soon</span>
+                  </div>
+                )}
                 <div className="team-card-body">
                   <h3>{member.name}</h3>
                   <p className="team-role">{member.role}</p>
